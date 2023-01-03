@@ -124,7 +124,7 @@ function deleteTask(taskType, taskIndex) {
 function hideAddTaskModel() {
   document.getElementById("task-input").value = "";
   document.getElementById("tag-input").value = "";
-  document.getElementById("add-task-model").style.top = "-100%";
+  document.getElementById("add-task-model").style.top = "-150%";
 }
 
 function showAddTaskModel() {
@@ -204,7 +204,7 @@ function showResetModel() {
 }
 
 function hideResetModel() {
-  document.getElementById("reset-model").style.top = "-100%";
+  document.getElementById("reset-model").style.top = "-150%";
 }
 
 function clearAll() {
