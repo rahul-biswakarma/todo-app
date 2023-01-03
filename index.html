@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="w-full min-h-[100vh] bg-bg">
+
+    <!-- Main Container -->
+    <section class="w-full z-10">
+        <header
+            class="sticky w-full top-[0px] left-[0px] flex max-[380px]:flex-col  flex-row justify-between gap-[1.5rem] text-text-1 pad-d-pad z-10 bg-bg border-b-2 border-border-color p-d-pad">
+            <div class="flex gap-[0.5rem] max-[380px]:justify-center justify-start">
+                <img class="w-[20px] sm:w-[30px] h-auto" src="./assets/images/logo.svg" alt="logo">
+                <h1 class="font-[500] text-[1.4rem] sm:text-[2rem]">Todo List</h1>
+            </div>
+            <div
+                class="flex gap-[1rem] sm:gap-[3rem] max-[380px]:border-t-2 border-border-color max-[380px]:pt-d-pad max-[380px]:justify-center justify-end pt-[0px]">
+                <svg onclick="showResetModel()"
+                    class="w-[25px] h-auto stroke-icons-color-1 hover:stroke-rose-700 cursor-pointer"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                        d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
+                </svg>
+                <button onclick="showAddTaskModel()"
+                    class="flex gap-[10px] items-center rounded-md border-2 border-[#cb70ea] px-[0.8rem] sm:px-[1.5rem] bg-[#ecd7f3]">
+                    <svg class="w-[20px] h-auto stroke-[#b64ed8] flex items-center" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M12 5v14m-7-7h14" />
+                    </svg>
+                    <span class="text-[#b64ed8] mb-[-5px]">Add Task</span>
+                </button>
+            </div>
+
+        </header>
+
+        <!-- Main Section -->
+        <main class="flex w-full justify-center p-d-pad z-30">
+            <div id="todo-container"
+                class="flex flex-col w-full p-[3rem_5%] pb-[5%] bg-bg-2 rounded-lg h-max max-w-[900px]">
+                <div class="flex justify-between items-center">
+                    <h2 class="flex gap-[10px] pb-[1rem] text-text-2"><span class="text-text-2 font-bold">></span> Tasks
+                        👍
+                    </h2>
+                    <div id="total-tasks-count" class="text-text-2"></div>
+                </div>
+                <div class="flex flex-col gap-[1rem] w-full">
+                    <ul id="todo" class="flex flex-col gap-[1rem]"></ul>
+                    <ul id="in_progress" class="flex flex-col gap-[1rem]"></ul>
+                    <div id="completed-heading" class="flex justify-between items-center">
+                        <h2 class="flex gap-[10px] pt-[1rem] text-text-2"><span class="text-text-2 font-bold">></span>
+                            Completed 😎
+                        </h2>
+                        <div class="text-text-2">
+                            <span id="completed-tasks-count"></span> / <span id="total-tasks-count-2"></span>
+                        </div>
+                    </div>
+                    <ul id="done" class="flex flex-col gap-[1rem]"></ul>
+                </div>
+            </div>
+        </main>
+        <!-- Main Section Ends -->
+    </section>
+    <!-- Main Container Ends -->
+
+    <!-- Add Task Model -->
+    <section id="add-task-model"
+        class="absolute top-[-100%] left-[0px] w-[100vw] h-[100vh] flex justify-center items-center bg-black/40 backdrop-blur-sm z-50 transition-all">
+
+        <!-- Add Task From -->
+        <form class="relative p-[3rem] bg-bg w-max h-max flex flex-col gap-[2rem] px-[5rem]">
+            <h1 class="font-[500] text-[2rem] text-text-1 pb-[1rem]">Add Task</h1>
+            <input class="border-b-2 border-[#000] p-[0.5rem] focus:outline-none" type="text" name="task"
+                id="task-input" placeholder="Task">
+            <input class="border-b-2 border-[#000] p-[0.5rem] focus:outline-none" type="text" name="tag" id="tag-input"
+                placeholder="Tag">
+
+            <!-- Status -->
+            <div class="flex flex-col gap-[1rem]">
+                <label for="status">Status</label>
+                <span class="flex gap-[0.5rem]">
+                    <input type="radio" id="todo-radio" name="status" value="todo">
+                    <label for="todo-radio">Todo</label>
+                </span>
+                <span class="flex gap-[0.5rem]">
+                    <input type="radio" id="progress-radio" name="status" value="in_progress">
+                    <label for="progress-radio">In Progress</label>
+                </span>
+                <span class="flex gap-[0.5rem]">
+                    <input type="radio" id="done-radio" name="status" value="done">
+                    <label for="done-radio">Done</label>
+                </span>
+            </div>
+
+            <button onclick="addTask()"
+                class="w-full bg-amber-400 py-[1rem] cursor-pointer border-2 border-amber-400 hover:border-amber-600">Add</button>
+            <svg onclick="hideAddTaskModel()"
+                class="absolute top-[10px] right-[10px] rotate-45 w-[25px] h-auto stroke-icons-color-2 hover:stroke-rose-600 cursor-pointer"
+                xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M12 5v14m-7-7h14" />
+            </svg>
+        </form>
+        <!-- Task Form Ends -->
+    </section>
+    <!-- Add Task Model Ends -->
+
+    <!-- Reset Model -->
+    <section id="reset-model"
+        class="absolute top-[-100%] left-[0px] w-[100vw] h-[100vh] flex justify-center items-center bg-black/40 backdrop-blur-sm z-50 transition-all">
+
+        <!-- Add Task From -->
+        <div class="relative p-[3rem] bg-bg w-max h-max flex flex-col gap-[2rem] px-[5rem]">
+            <h1 class="font-[500] text-[2rem] text-text-1 pb-[1rem]">Warning: Delete all tasks?</h1>
+            <button onclick="clearAll()"
+                class="w-full bg-rose-400 py-[1rem] cursor-pointer border-2 border-rose-400 hover:border-rose-600">Yes,
+                Delete
+            </button>
+            <svg onclick="hideResetModel()"
+                class="absolute top-[10px] right-[10px] rotate-45 w-[25px] h-auto stroke-icons-color-2 hover:stroke-rose-600 cursor-pointer"
+                xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M12 5v14m-7-7h14" />
+            </svg>
+        </div>
+    </section>
+    <!-- Reset Model Ends -->
+
+
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>

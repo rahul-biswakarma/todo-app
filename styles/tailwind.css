@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Anybody", cursive;
+  /* font-family: "Montserrat", sans-serif; */
+}
+
+.list-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 1rem;
+  box-shadow: 0px 2px 10px rgba(91, 91, 91, 0.1);
+  border-radius: 8px;
+  gap: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.todo-tag,
+.done-tag,
+.task-tag,
+.in-progress-tag {
+  width: max-content;
+  font-family: monospace;
+  width: max-content;
+  background: #d7e2fe;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  color: #2c51ad;
+  border: 2px solid #d7e2fe;
+  cursor: pointer;
+  text-transform: lowercase;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+}
+
+.todo-tag:hover {
+  border-color: #6585d8;
+}
+
+.in-progress-tag {
+  background: #ffe1be;
+  border-color: #ffe1be;
+  color: #a9661a;
+}
+
+.in-progress-tag:hover {
+  border-color: #db994e;
+}
+
+.task-tag {
+  background: #ffbee5;
+  border-color: #ffbee5;
+  color: #c03b8b;
+}
+
+.task-tag:hover {
+  border-color: #c03b8b;
+}
+
+.done-tag {
+  background: #d7f3e3;
+  border-color: #d7f3e3;
+  color: #217947;
+}
+
+.done-tag:hover {
+  border-color: #217947;
+}
+
+.tags-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.checked-item {
+}
